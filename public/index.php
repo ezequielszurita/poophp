@@ -1,31 +1,35 @@
 <?php
-    class Facebook{
+        class Vehiculo{
+            public $motor = false;
+            public $marca;
+            public $color;
 
-        public $nombre;
-        public $edad;
-        private $pass;
+            public function estado(){
+                if($this->motor) //corobora si es true
+                    echo "El motor esta encendido<br>";
+                else
+                    echo "El motor esta apagado<br>";
+        }
+            public function encender(){
+                if($this->motor){
+                    echo "Cuidado, el motor ya esta prendido<br>";
+                }
+                else
+                    echo "El motor ahora esta encendido<br>";
+                    $this->motor=true;
+            }
 
-        public function __construct($nombre, $edad, $pass){
-            $this->nombre = $nombre;
-            $this->edad = $edad;
-            $this->pass = $pass;
         }
 
-        public function verInformacion(){
-            echo "Nombre: " . $this->nombre ."<br>";
-            echo "Edad: " . $this->edad ."<br>";
-            $this->cambiarPass("123456");
-            echo "Clave: " . $this->pass ."<br>";
+        class Moto extends Vehiculo {
 
         }
-        private function cambiarPass($pass){
-            $this->pass = $pass;
-        }
-    }
 
-    $facebook = new Facebook("Ezequiel",20,"NadieSabe");
-    //echo $facebook->pass;
-    //$facebook->cambiarPass("123456");
-    $facebook->verInformacion();
+        class CuatriMoto extends Moto {
+
+        }
+
+        $moto = new Moto();
+        $moto->estado();
 
 ?>
